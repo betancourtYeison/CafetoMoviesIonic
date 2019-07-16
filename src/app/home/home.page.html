@@ -1,0 +1,57 @@
+<ion-header translucent class="header-center">
+  <ion-item>
+    <ion-label>Choose a year</ion-label>
+    <ion-select [(ngModel)]="selectedYear" (ionChange)="getData()">
+      <ion-select-option [value]="year" *ngFor="let year of years">{{
+        year
+      }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-header>
+<ion-content fullscreen padding scroll-y="false">
+  <ion-slides #slides [options]="slideOpts">
+    <ng-container *ngIf="movies && selectedYear; else elseTemplate">
+      <ion-slide *ngFor="let movie of movies[selectedYear]">
+        <img [src]="movie.poster" />
+        <h2 class="title">{{ movie.title }}</h2>
+        <h2 class="provide">PROVIDE YOUR RANK</h2>
+        <ion-row class="rating-center">
+          <ion-fab-button
+            color="light"
+            size="small"
+            (click)="setRating(movie, rate)"
+            *ngFor="let rate of rating"
+          >
+            <ion-icon [name]="getRating(movie, rate)"></ion-icon>
+          </ion-fab-button>
+        </ion-row>
+      </ion-slide>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <ion-slide>
+        <img src="../../assets/noimage.png" />
+        <h2 class="title">MOVIE NAME</h2>
+        <h2 class="provide">PROVIDE YOUR RANK</h2>
+        <ion-row class="rating-center">
+          <ion-fab-button
+            color="light"
+            size="small"
+            *ngFor="let rate of rating"
+          >
+            <ion-icon name="radio-button-off"></ion-icon>
+          </ion-fab-button>
+        </ion-row>
+      </ion-slide>
+    </ng-template>
+  </ion-slides>
+  <ion-fab class="mt-150" vertical="start" horizontal="start" edge slot="fixed">
+    <ion-fab-button color="light" size="small" (click)="slidePrev()">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab class="mt-150" vertical="start" horizontal="end" edge slot="fixed">
+    <ion-fab-button color="light" size="small" (click)="slideNext()">
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

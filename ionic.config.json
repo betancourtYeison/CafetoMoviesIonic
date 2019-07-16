@@ -1,0 +1,8 @@
+{
+  "name": "CafetoMoviesIonic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "f1c32066"
+}

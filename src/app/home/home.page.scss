@@ -1,0 +1,33 @@
+.swiper-slide {
+  display: block;
+}
+
+.header-center {
+  margin-top: 30px;
+  align-self: center !important;
+  width: 70%;
+}
+
+.rating-center {
+  justify-content: center;
+}
+
+.mt-150 {
+  margin-top: 150px;
+}
+
+.title {
+  margin-top: 1.5rem;
+}
+
+.provide {
+  margin-top: 2.5rem;
+  border-top-width: 1px;
+  border-top-style: solid;
+  padding-top: 1rem;
+}
+
+ion-slide > img {
+  height: 300px;
+  width: 200px;
+}
